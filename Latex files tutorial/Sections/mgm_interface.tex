@@ -1,0 +1,40 @@
+\newpage
+
+\section{Management network}
+The management interface is the website you access during the configuration. Since this is using an IP that is in the same range as the other devices, this is called \cmd{in-band} management. This should be avoided since a high load on the network can make it hard to manage the firewall. A solution for this is to create an own management network. When this is done it is called \cmd{out-of-band} management.
+
+In this section, you will learn:
+\begin{itemize}
+    \item Create another network interface.
+    \item Use the new interface as a management interface.
+\end{itemize}
+
+\begin{importantblock}
+    Before starting on any of the configurations below, create a snapshot or a backup of the configuration of your \opnsense\ firewall, so it is easy to restore if errors are made. 
+    
+    It is \textbf{recommended} that you restore to your backup configuration after you have done this task to make it easier later in the tutorial.
+\end{importantblock}
+
+When an own management interface is set, it is hardening our network infrastructure. Since it is not possible to access the management page of the firewall anymore outside of the interface that is set, versus the previous one that could be accessed via the local network.
+
+\setupblock{\begin{enumerate}
+    \item Create a new virtual interface (see section \ref{opnsense_setup} if unsure) on the firewall. % do i need to explain this better?
+    \item Goto \cmd{System  --> Settings --> Administration} and change the option called \cmd{Listen interface} to the new interface you created.
+    \item Modify the Ubuntu Desktop network interface to connect to the new network interface on the firewall.
+\end{enumerate}}
+
+\begin{importantblock}
+    When you are changing to the new managing interface, you will not be able to access the firewall as you did earlier. You will need to change your IP to match the newly created interface network.
+\end{importantblock}
+
+\warnblock{The two next paragraphs are not necessary to do, it is just a high-level example of what could be done.}
+
+This can also be done using aliases. Create two aliases, the first one with the IPs that should have access to the management interface and the alias with the ports that are required. Use those aliases to create the firewall rules that give the IP, with those ports access to the management interface and another rule that is blocking everything else and log it.
+
+If there are multiple IP's in the alias that is using the management interface, there must be created routing rules in \cmd{System --> Routes --> Configure}, so they can talk to each other.
+
+You should also block all traffic from the other interfaces to the management interface. To do this, use a floating rule.
+
+\quesblock{\begin{enumerate}
+    \item[28.] Why would you put the management of the firewall and other network devices on a separate network?
+\end{enumerate}}

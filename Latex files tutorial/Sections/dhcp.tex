@@ -1,0 +1,27 @@
+\newpage
+
+\section{Dynamic Host Configuration Protocol (DHCP)} \label{DHCP}
+
+\warnblock{This chapter is a reading task. It is not required to do the configurations, since the configuration was done during the initial setup of the firewall. If you choose to change the DHCP service, make a backup of your configuration before starting.}
+
+\subsection{DHCP}
+The configuration we have made in this tutorial is very common, a firewall with some clients behind it. DHCP is a service that gives each device (client) that are connected to the network an IP address. Since the IPv4 address range is limited, DHCP is used to ''expand'' the numbers of available IP on the local network. RFC1918 (\cite{GeertJande1996}) describes which IP addresses can be used in a local network.
+
+Learning objectives for this module are:
+\begin{itemize}
+    \item How to setup/configure DHCP on the \opnsense\ firewall.
+\end{itemize}
+
+The settings for DHCP can be found at \cmd{Services --> DHCPv4} for IPv4 and \cmd{Services --> DHCPv6} for IPv6. For IPv6 you are dependent that your ISP provides an IPv6 prefix that the firewall can use to distribute IPv6 addresses to the clients.
+
+An explanation of the different menu options for DHCP. The two first entries are unique for IPv4:
+\begin{itemize}
+    \item \cmd{Interface name} - Each interface is listed and it is possible to enable/disable DHCP on the interface, change the IP range for DHCP and which DNS server it should use.
+    \item \cmd{Log File} - The log file for the IPv4 DHCP server.
+    \item \cmd{Relay} - If the DHCP server is somewhere else than the firewall. Need to disable the DHCP server for this to work.
+    \item \cmd{Leases} - See the different clients that use the DHCP.
+\end{itemize}
+
+\quesblock{\begin{enumerate}
+    \item[47.] Can you explain what DHCP is?
+\end{enumerate}}

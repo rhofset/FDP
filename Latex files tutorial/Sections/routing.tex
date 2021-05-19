@@ -1,0 +1,31 @@
+\newpage
+
+\section{Routing}
+\warnblock{This chapter is a reading task. It is not required to do the configuration since it requires more infrastructure (another network).}
+
+Learning objectives for this module are:
+\begin{itemize}
+    \item How to setup/configure routing
+\end{itemize}
+
+The firewall has a routing table that contains all known routes. With routes, in this case, means routes between interfaces on the firewall and other networks locally. \opnsense\ creates automatically routes between interfaces that are present on the firewall.
+
+Goto \cmd{System --> Routes --> Status} to see the routes that exists.
+
+If you have other networks locally, that the firewall needs to deliver packets to, you need to create a route to it. If not, the firewall does not know about the other network. To create a route there must be a gateway present at the other network, and an entry in the routing table needs to be created. Follow the configuration below to add a route:
+
+\setupblock{\begin{enumerate}
+    \item Make sure that there is a gateway on the network that is added to the routing table.
+    \item Goto \cmd{System --> Routes --> Configuration}.
+    \item Configure the \cmd{Network Address} (destination network), \cmd{Gateway} (gateway to use), and  set a \cmd{Description}.
+\end{enumerate}}
+
+\opnsense\ can only create static routes.
+
+\begin{importantblock}
+    Some features in \opnsense\ create routes automatically. Such as VPN.
+\end{importantblock}
+
+\quesblock{\begin{enumerate}
+    \item[48.] How could you check if routing is working?
+\end{enumerate}}

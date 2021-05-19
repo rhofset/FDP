@@ -1,0 +1,60 @@
+\newpage
+
+\section{Domain Name System (DNS)} \label{DNSDHCP}
+
+\warnblock{This chapter is a reading task. It is not required to do the configurations, since the configuration was done during the initial setup of the firewall. If you choose to use the OpenDNS service, make a backup of your configuration before starting.}
+
+Learning objectives for this module are:
+\begin{itemize}
+    \item How to setup/configure DNS on the \opnsense\ firewall.
+    \item Setup/configure the OpenDNS service.
+\end{itemize}
+
+DNS is a service that resolves IP addresses to a human-readable website. For example the Norwegian newspaper \url{www.vg.no} has the IP addresses \cmd{195.88.54.16 - 19}. A total of four (4) different IP's. A DNS can resolve both IPv4 and IPv6. If a client cannot get access to a DNS server, it will not be able to access the internet, since it does not know which IP a website is pointing to. 
+
+\tipbox{\url{https://whois.domaintools.com/} can be used to lookup IP's.}
+
+As default, \opnsense\ have the \cmd{Unbound DNS} service enabled. It can be found in \cmd{Services --> Unbound DNS}. The \cmd{Unbound DNS} service will do validating, caching, and recursive DNS queries.
+
+\begin{itemize}
+    \item Recursive - If the IP cannot be resolved locally (in cache), it asks one of the root authorities to look it up.
+    \item Validate - Validates the result from a root DNS server. Uses most often DNSSEC.
+    \item Cache - A local copy that stores lookup done earlier.
+\end{itemize}
+
+This means that you can use an external DNS or the firewalls IP as DNS when you are configuring a client on your tutorial network. During the preparation phase of this tutorial, there was a wizard (see section \ref{setup_wizard}) where you inserted the google DNS servers IP addresses. This is the IP's the firewall is relaying DNS request to.
+
+Some well know addresses for DNS is:
+\begin{itemize}
+    \item 8.8.8.8 - google.com
+    \item 8.8.4.4 - google.com
+\end{itemize}
+
+%Unbound DNS is the default DNS service that is run on the \opnsense\ firewall. The configuration can be found in \cmd{Services --> Unbound DNS}.
+
+Other DNS services on the firewall:
+
+\subsubsection*{DNSmasque DNS}
+This was the prefered solution for DNS in the firewall before version 17.7\footnote{\url{https://docs.opnsense.org/manual/dnsmasq.html}}. Legacy is the reason it exists as a service in the firewall.
+
+\subsubsection*{OpenDNS}
+OpenDNS is a service provided by OpenDNS\footnote{\url{https://www.opendns.com/}}. They deliver DNS services that you need to pay for or for the basic packs there are free options. Depending on which services you choose, they will try to give you protection from phishing. 
+
+To try their ''Family Shield'' plan, which is free and super easy to set up, just change the DNS servers you are using to: \cmd{208.67.222.123}. 
+
+If you sign up for their service, use the \cmd{Service --> Open DNS} to configure it.
+
+\setupblock{\begin{enumerate}
+    \item Check the checkbox besides \cmd{Enable} to enable OpenDNS.
+    \item Set your \cmd{Username} and \cmd{Password} to the username and password used on the OpenDNS website.
+    \item Set \cmd{Network} to the network you configured/created on the OpenDNS website dashboard\footnote{https://www.opendns.com/dashboard/networks/}.
+    \item Change the DNS server the firewall is using in \cmd{System --> Settings --> General}.
+\end{enumerate}}
+
+\begin{importantblock}
+    If you choose to sign up for this service and is removing it later, remember to check that you are using the correct DNS servers after you disable the service. (\cmd{System --> Settings --> General})
+\end{importantblock}
+
+\quesblock{\begin{enumerate}
+    \item[46.] What does DNS do?
+\end{enumerate}}

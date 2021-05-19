@@ -1,0 +1,96 @@
+\documentclass[11pt,a4paper,british]{nuctut}
+\geometry{verbose,tmargin=2cm,bmargin=2.5cm,lmargin=2.0cm,rmargin=2.5cm}
+
+
+%----------------------- DEFINE YOUR VARIABLES BELOW -------------------
+\newcommand{\coursename}{Appendix B, Final Degree Assessment} %Change to the coursename that is used.
+\newcommand{\coursecode}{UC3FDP201 - Appendix B} %Cange to the correct coursecode.
+\newcommand{\week}{2} %todo deal with norwegian week numbers
+\newcommand{\tutname}{Secure Network using OPNSense\textregistered}
+\newcommand{\version}{Version 1.0.0 - 19/05/2021}
+\newcommand{\copyrightowner}{Runar Hofset}
+\newcommand{\opnsense}{OPNSense\textregistered}
+
+%----------------------- DEFINE YOUR VARIABLE ABOVE  -------------------
+%% Define your footers here.
+\cfoot{\small{\thepage\ of \pageref{LastPage}} } %% Sets pages X of Y
+\chead{\textsc{\coursecode}}
+\rfoot{\tiny{\textcopyright{\copyrightowner}}} 
+% if this changes by section just insert an updated variant before any \input
+
+%% remove this this is for demo only
+\usepackage{blindtext}
+
+\begin{document}
+
+\pagenumbering{Roman} % set page numbering to Uppercase Roman vs \roman
+\input{Sections/FrontCover}
+
+\input{Sections/Purpose}
+\input{Sections/Legend}
+\newpage
+\pagestyle{fancy}
+\setlength{\headheight}{60pt}
+\rhead{\includegraphics[width=1.8cm]{Images/Noroff-logo-H.jpg}}
+\lhead{\leftmark}
+%----------------------- Start Editing Below -------------------
+%% Uncomment if this is going the be rolled out during the week
+%%\textbf{This tut may be updated during the course of the week, make sure you have the latest version as shown on Moodle.}
+\tableofcontents{}
+\noindent\rule[0.5ex]{1\columnwidth}{1pt}
+\subsection*{CHANGELOG}
+%% Changelogs are useful for amending issues that may crop up
+%% remember to bump \version above on line 8
+\small{
+\begin{itemize}
+    \item v1.0.0 - Initial Release - 19/05/2021 Runar Hofset
+\end{itemize}
+}
+
+\noindent\rule[0.5ex]{1\columnwidth}{1pt}
+
+\newpage
+\pagenumbering{arabic} % Set to normal page numbering
+
+%% ------------------- Input your tasks here ---------------------------
+\input{Sections/notes.tex}
+\input{Sections/Preparation}
+\input{Sections/admin.tex}
+\input{Sections/firewall.tex}
+\input{Sections/nat.tex} % Need some work!!
+\input{Sections/mgm_interface.tex}
+\input{Sections/bandwith.tex}
+\input{Sections/vpn.tex}
+
+\input{Sections/proxy.tex}
+%\input{Sections/auth.tex} %Holding off this, since this is not a service that is running on OpnSense.
+\input{Sections/IDS.tex}
+\input{Sections/dns.tex}
+\input{Sections/dhcp.tex}
+\input{Sections/routing.tex}
+\input{Sections/NetFlow.tex} % This is the reporting tab in opnsense
+%\input{Sections/VLAN.tex} %Holding off this, since this is not a service that is running on OpnSense.
+
+
+
+%\input{Tasks/sample}
+
+
+%% Start numbering sections from here using Alphas - eg 
+\renewcommand\thesection{\Alph{section}}
+\setcounter{section}{0}
+\addcontentsline{toc}{section}{Resources}
+% items below are listed under Resources
+\input{Sections/answers.tex}
+%\input{Sections/Reading}
+%\input{Sections/FAQ}
+%% ------------------- End of tasks section ---------------------------
+\newpage
+
+
+\printbibliography
+\addcontentsline{toc}{section}{References}
+
+
+\newpage
+\end{document}

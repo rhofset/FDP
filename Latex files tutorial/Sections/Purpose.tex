@@ -1,0 +1,64 @@
+\pagestyle{fancy}
+\section*{Purpose}
+The purpose of this tutorial is to learn how to secure a network. A firewall's job is to filter packets, based on a set of rules it has. In its most basic form, it intercepts the traffic that goes through it, and allow or block traffic based on rules. In the tutorial, the \opnsense\ firewall solution is used. It is an environment with multiple features/services that can be used to secure a network. The tutorial will guide you through most of the features that exist in the \opnsense\ firewall solution. 
+
+During the period you are working on this tutorial, it is expected that you explore and experiment with the features that exist in this environment. Try to add features that are not present in this tutorial or explorer other similar environments.
+
+\subsection*{\opnsense}
+
+\opnsense\footnote{\url{https://opnsense.org/}} is a firewall solution created by Deciso\footnote{\url{https://www.deciso.com/}}. It is free to use, and it is an open-source firewall, that has features that can do the same as commercial-grade equipment. It originates from a fork from pFsense and m0n0wall in 2014. The firewall is based on HardenedBSD. Some examples of features will be firewall rules, VPN, NAT, and proxy.
+
+If you later want to develop features, submit or find answers to issues, or support them in any other way, it can be done using their Github pages.
+
+\gitblock{OPNsense Github page:}{https://github.com/opnsense}
+
+\subsection*{VMware}
+VMWare will be used as our hypervisor for this tutorial. During the tutorial, you will be creating some virtual machines. Such as:
+
+\begin{enumerate}
+    \item A virtual machine with \opnsense\ as your firewall.
+    \item As your client, you will be using a virtual machine Ubuntu desktop machine. It is possible to use your host machine, but it is not recommended.
+    \item And at last one virtual Ubuntu server machine.
+\end{enumerate}
+
+\subsection*{How to use}
+This tutorial is made modular. Each of the chapters can be used standalone as a module. It is possible to do the tutorial from the first to the last page or choose one or multiple of the different modules. If the modular approach is used, then the \ref{preparation} chapter needs to be done first since it is the initial configuration of the firewall.
+
+\subsection*{Questions}
+In this tutorial, all questions are numbered from one (1) and upward. The questions in each module are related to the topic the module contained. There are mainly two different types of questions, the first type is questions that are used to check if you have understood the topic. The second type is questions that are used to enhance your understanding of the topic and to research on your own.
+
+In appendix \ref{answers}, all the questions are listed with their answer. This will make it easy if you are stuck on one or multiple questions. Not all questions will have answers since some of them are to encourage you to explore some topics.
+
+It is highly recommended that you do as many as possible of the questions that are in each of the modules you are working on.
+
+\subsection*{Learning objectives}
+The learning objectives depend on how the tutorial is used. But if all modules are done, you should have learned:
+\begin{itemize}
+    \item To be able to use \opnsense\ as a firewall.
+    \item Configure the different features that the firewall has. The main features are:
+    \begin{itemize}
+        \item Create firewall rules.
+        \item How to limit bandwidth.
+        \item How VPN works.
+        \item How a proxy can be used.
+        \item Set up an IDS (Intrusion Detection System).
+        \item Configure a VPN server and client.
+    \end{itemize}
+    \item Use this knowledge to create a secure network.
+\end{itemize}
+
+\tipbox{Writing notes during this tutorial to make it easier for you to remember what you are doing and quickly look up what you have done. This is discussed in section \ref{notes}.}
+
+%\subsection*{Timing} 
+%\begin{itemize}
+%    \item \textbf{Day 1:}
+%    \item \textbf{Day 2:}
+%    \item \textbf{Day 3:}
+%    \item \textbf{Day 4:}
+%\end{itemize}
+
+\subsection*{Additional sources}
+
+\readblock{\cite{Stubbig2019} has a book named "Practical OPNsense". The book goes through most of the features that \opnsense\ has, but the degree of detail varies during the different features. The book is directed at enterprise environment, where multiple \opnsense\ firewalls are used. The book can be bought at regular bookshops or online.}
+
+\readblock{Another great source for information about the OPNsense firewall is their online documentation, found at \url{https://docs.opnsense.org/intro.html}}
